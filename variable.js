@@ -62,4 +62,34 @@ const greeting = 'hello' + brendan;
 console.log(`value: ${greeting}, type : ${typeof greeting}`);
 const helloBob = `hi ${brendan}!`; //temlate literals (string)
 
-//18분 42초부터 시작
+//null
+
+let nothing = null;
+console.log(`value: ${nothing}, typeL ${typeof nothing}`);
+
+//undefined
+
+let x;
+console.log(`value: ${x}, type : ${typeof x}`);
+
+//symbol
+const symbol1 = Symbol('id');
+const symbol2 = Symbol('id');
+console.log(symbol1 === symbol2);
+
+const gSymbol1 = Symbol.for('id');
+const gSymbol2 = Symbol.for('id');
+console.log(gSymbol1 === gSymbol2);
+console.log(`value : ${sybol1.description}, type: ${typeof sybol1}`);
+// description > 변환하여서 보내줌
+
+//5. Dynamic typing : dynamically typed language
+let text = 'hello';
+console.log(`value: ${text}, type : ${typeof text}`);
+text = 1;
+console.log(`value: ${text}, type : ${typeof text}`);
+text = '7' + 5;
+console.log(`value: ${text}, type : ${typeof text}`);
+text = '8' / '2';
+console.log(`value: ${text}, type : ${typeof text}`);
+console.log(text.charAt(0)); // 오류 발생 타입이 nubmer 이기 때문에

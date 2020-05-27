@@ -74,3 +74,23 @@ console.log(fruits);
 const fruits2 = ['키위', '망고'];
 const newFruits = fruits.concat(fruits2);
 console.log(newFruits);
+
+//5. Searching
+// find the index
+console.clear();
+console.log(fruits);
+//indexOf > 위치 
+console.log(fruits.indexOf('사과')); //0
+console.log(fruits.indexOf('수박')); //2 
+console.log(fruits.indexOf('코코넛')); // 없으면 -1 출력
+//includes > 있는지 없는지 확인
+console.log(fruits.includes('코코넛')); //false
+console.log(fruits.includes('수박')); //true
+
+// lastIndexOf
+console.clear();
+fruits.push('사과');
+console.log(fruits);
+console.log(fruits.indexOf('사과')); // 처음부터 찾음
+console.log(fruits.lastIndexOf('사과')); //마지막 부터 찾음
+
