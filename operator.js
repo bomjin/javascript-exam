@@ -31,4 +31,42 @@ console.log(stringFive != numberFive);
 console.log(stringFive === numberFive);
 console.log(stringFive !== numberFive);
 
-//11분06초
+// equality -puzler
+console.log(0 == false);
+console.log(0 === false);
+console.log('' == false);
+console.log('' === false);
+
+//  conditional operators : if
+// if, else if, else
+
+const name = 'ellie';
+if (name === 'ellie') {
+  console.log('Welcome');
+} else if (name === 'coder') {
+  console.log('you are coder');
+} else {
+  console.log('unkwnon');
+}
+
+//Swith statement
+
+const browser = 'IE';
+switch (browser) {
+  case 'IE':
+    console.log('go away');
+    break;
+  case 'Chrome':
+  case 'Firefox':
+    console.log('love you');
+    break;
+  default:
+    console.log('same all');
+    break;
+}
+
+// for
+
+for (i = 3; i > 0; i--) {
+  console.log(`for: ${i}`);
+}
