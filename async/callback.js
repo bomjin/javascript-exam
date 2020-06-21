@@ -19,17 +19,53 @@ function printWithDelay(print, timeout) {
 }
 printImmediately(() => console.log('async callback'), 2000);
 
-//promise chaining
-const fetchNumber = new Promise((resolve, reject) => {
-  setTimeout(() => resolve(1), 1000);
-});
+//Callback Hell example
 
-fetchNumber
-  .then((num) => num * 2)
-  .then((num) => num * 3)
-  .then((num) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(num - 1), 1000);
-    });
-  })
-  .then((num) => console.log(num));
+class UserStorge {
+  loginUser(id, password, onSuccess, onError) {
+    setTimeout(() => {
+      if (
+        (id === 'ellie' && password === 'dream') ||
+        (id === 'coder' && password === 'academy')
+      ) {
+        onSuccess(id);
+      } else {
+        onError(new Error('not found'));
+      }
+    }, 2000);
+  }
+
+  getRoles(user, onSuccess, onError) {
+    setTimeout(() => {
+      if (user === 'ellie') {
+        onSuccess({ name: 'ellie', role: 'admin' });
+      } else {
+        onError(new Error('no access'));
+      }
+    }, 1000);
+  }
+}
+
+const userStorge = new UserStorge();
+const id = prompt('enter your id');
+const password = prompt('enter your password');
+userStorge.loginUser(
+  id,
+  password,
+  (user) => {
+    userStorge.getRoles(
+      user,
+      (userWithRole) => {
+        alert(
+          `hello ${userWithRole.name}, you have a ${userWithRole.role} role`
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  (error) => {
+    console.log(error);
+  }
+);

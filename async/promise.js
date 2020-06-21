@@ -29,3 +29,45 @@ promise
   .finally(() => {
     console.log('finally');
   });
+
+//promise chaining
+const fetchNumber = new Promise((resolve, reject) => {
+  setTimeout(() => resolve(1), 1000);
+});
+
+fetchNumber
+  .then((num) => num * 2)
+  .then((num) => num * 3)
+  .then((num) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve(num - 1), 1000);
+    });
+  })
+  .then((num) => console.log(num));
+
+// Error handling
+
+const getHen = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => resolve('닭'), 1000);
+  });
+const getEgg = (hen) =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => reject(new Error(` error : ${hen} => '달걀'`)), 1000);
+  });
+const cook = (egg) =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => resolve(`${egg} => '병아리'`), 1000);
+  });
+
+getHen()
+  .then(getEgg)
+  .then(cook)
+  .catch((error) => {
+    return '소시지';
+  })
+  .then(console.log);
+
+// .then((hen) => getEgg(hen))
+// .then((egg) => cook(egg))
+// .then((meal) => console.log(meal));
